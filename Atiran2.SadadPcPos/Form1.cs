@@ -12,20 +12,17 @@ namespace Atiran2.SadadPcPos
 {
     public class Form1 : Form
     {
-        //public PcPosBusiness PcPos;
-        //private int[] retryTimeOut = new[] { 5000, 5000, 5000 };
-        //private int[] responseTimeout = new[] { 120000, 5000, 5000 };
+
 
         private string IP_Pos = "192.168.100.1";
         private RadioButton radioButtonSync;
         private RadioButton radioButtonAsync;
+        public Label label8;
+        private TextBox ResponseCodeMessage;
         private int Port_Pos = 8888;
-        private PcPos Pc;
         public Form1()
         {
             InitializeComponent();
-
-            Pc = new PcPos(btnSale, RRN, PcPosStatus, this);
         }
 
         private TextBox txtSaleOrderId;
@@ -103,6 +100,8 @@ namespace Atiran2.SadadPcPos
             this.label2 = new System.Windows.Forms.Label();
             this.radioButtonSync = new System.Windows.Forms.RadioButton();
             this.radioButtonAsync = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ResponseCodeMessage = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtSaleOrderId
@@ -111,11 +110,12 @@ namespace Atiran2.SadadPcPos
             this.txtSaleOrderId.Name = "txtSaleOrderId";
             this.txtSaleOrderId.Size = new System.Drawing.Size(120, 20);
             this.txtSaleOrderId.TabIndex = 134;
+            this.txtSaleOrderId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label106
             // 
             this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(165, 204);
+            this.label106.Location = new System.Drawing.Point(138, 204);
             this.label106.Name = "label106";
             this.label106.Size = new System.Drawing.Size(45, 13);
             this.label106.TabIndex = 135;
@@ -127,6 +127,7 @@ namespace Atiran2.SadadPcPos
             this.RRN.Name = "RRN";
             this.RRN.Size = new System.Drawing.Size(120, 20);
             this.RRN.TabIndex = 118;
+            this.RRN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Terminal
             // 
@@ -134,11 +135,12 @@ namespace Atiran2.SadadPcPos
             this.Terminal.Name = "Terminal";
             this.Terminal.Size = new System.Drawing.Size(120, 20);
             this.Terminal.TabIndex = 122;
+            this.Terminal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(360, 177);
+            this.label7.Location = new System.Drawing.Point(349, 231);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 13);
             this.label7.TabIndex = 107;
@@ -150,11 +152,12 @@ namespace Atiran2.SadadPcPos
             this.ApprovalCode.Name = "ApprovalCode";
             this.ApprovalCode.Size = new System.Drawing.Size(120, 20);
             this.ApprovalCode.TabIndex = 120;
+            this.ApprovalCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(361, 150);
+            this.label6.Location = new System.Drawing.Point(349, 204);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 105;
@@ -166,11 +169,12 @@ namespace Atiran2.SadadPcPos
             this.Merchant.Name = "Merchant";
             this.Merchant.Size = new System.Drawing.Size(120, 20);
             this.Merchant.TabIndex = 125;
+            this.Merchant.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(370, 123);
+            this.label5.Location = new System.Drawing.Point(349, 177);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 108;
@@ -182,11 +186,12 @@ namespace Atiran2.SadadPcPos
             this.OptionalField.Name = "OptionalField";
             this.OptionalField.Size = new System.Drawing.Size(120, 20);
             this.OptionalField.TabIndex = 126;
+            this.OptionalField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(358, 96);
+            this.label4.Location = new System.Drawing.Point(349, 150);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 103;
@@ -198,11 +203,12 @@ namespace Atiran2.SadadPcPos
             this.PcPosStatus.Name = "PcPosStatus";
             this.PcPosStatus.Size = new System.Drawing.Size(120, 20);
             this.PcPosStatus.TabIndex = 128;
+            this.PcPosStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(403, 69);
+            this.label3.Location = new System.Drawing.Point(349, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 109;
@@ -211,7 +217,7 @@ namespace Atiran2.SadadPcPos
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(189, 15);
+            this.label14.Location = new System.Drawing.Point(138, 15);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 13);
             this.label14.TabIndex = 129;
@@ -220,7 +226,7 @@ namespace Atiran2.SadadPcPos
             // ResponseCoderrr
             // 
             this.ResponseCoderrr.AutoSize = true;
-            this.ResponseCoderrr.Location = new System.Drawing.Point(367, 42);
+            this.ResponseCoderrr.Location = new System.Drawing.Point(349, 96);
             this.ResponseCoderrr.Name = "ResponseCoderrr";
             this.ResponseCoderrr.Size = new System.Drawing.Size(83, 13);
             this.ResponseCoderrr.TabIndex = 104;
@@ -229,7 +235,7 @@ namespace Atiran2.SadadPcPos
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(139, 42);
+            this.label13.Location = new System.Drawing.Point(138, 42);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(77, 13);
             this.label13.TabIndex = 127;
@@ -247,7 +253,7 @@ namespace Atiran2.SadadPcPos
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(383, 15);
+            this.label1.Location = new System.Drawing.Point(349, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 106;
@@ -261,11 +267,12 @@ namespace Atiran2.SadadPcPos
             this.txtPayAmount.Size = new System.Drawing.Size(218, 20);
             this.txtPayAmount.TabIndex = 101;
             this.txtPayAmount.Text = "1000";
+            this.txtPayAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(170, 69);
+            this.label12.Location = new System.Drawing.Point(138, 69);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(47, 13);
             this.label12.TabIndex = 124;
@@ -274,7 +281,7 @@ namespace Atiran2.SadadPcPos
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(400, 204);
+            this.label16.Location = new System.Drawing.Point(138, 230);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(50, 13);
             this.label16.TabIndex = 132;
@@ -282,24 +289,26 @@ namespace Atiran2.SadadPcPos
             // 
             // transactionDate
             // 
-            this.transactionDate.Location = new System.Drawing.Point(223, 174);
+            this.transactionDate.Location = new System.Drawing.Point(223, 228);
             this.transactionDate.Name = "transactionDate";
             this.transactionDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.transactionDate.Size = new System.Drawing.Size(120, 20);
             this.transactionDate.TabIndex = 116;
+            this.transactionDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtSerialNo
             // 
-            this.txtSerialNo.Location = new System.Drawing.Point(223, 201);
+            this.txtSerialNo.Location = new System.Drawing.Point(12, 227);
             this.txtSerialNo.Name = "txtSerialNo";
             this.txtSerialNo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtSerialNo.Size = new System.Drawing.Size(120, 20);
             this.txtSerialNo.TabIndex = 117;
+            this.txtSerialNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(165, 96);
+            this.label11.Location = new System.Drawing.Point(138, 96);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 123;
@@ -307,11 +316,12 @@ namespace Atiran2.SadadPcPos
             // 
             // TransactionTime
             // 
-            this.TransactionTime.Location = new System.Drawing.Point(223, 147);
+            this.TransactionTime.Location = new System.Drawing.Point(223, 201);
             this.TransactionTime.Name = "TransactionTime";
             this.TransactionTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TransactionTime.Size = new System.Drawing.Size(120, 20);
             this.TransactionTime.TabIndex = 115;
+            this.TransactionTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnSale
             // 
@@ -327,7 +337,7 @@ namespace Atiran2.SadadPcPos
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(145, 123);
+            this.label10.Location = new System.Drawing.Point(138, 123);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(71, 13);
             this.label10.TabIndex = 121;
@@ -335,32 +345,35 @@ namespace Atiran2.SadadPcPos
             // 
             // ResponseCode
             // 
-            this.ResponseCode.Location = new System.Drawing.Point(223, 39);
+            this.ResponseCode.Location = new System.Drawing.Point(223, 93);
             this.ResponseCode.Name = "ResponseCode";
             this.ResponseCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ResponseCode.Size = new System.Drawing.Size(120, 20);
             this.ResponseCode.TabIndex = 111;
+            this.ResponseCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TransactionNo
             // 
-            this.TransactionNo.Location = new System.Drawing.Point(223, 120);
+            this.TransactionNo.Location = new System.Drawing.Point(223, 174);
             this.TransactionNo.Name = "TransactionNo";
             this.TransactionNo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TransactionNo.Size = new System.Drawing.Size(120, 20);
             this.TransactionNo.TabIndex = 114;
+            this.TransactionNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // CardNo
             // 
-            this.CardNo.Location = new System.Drawing.Point(223, 66);
+            this.CardNo.Location = new System.Drawing.Point(223, 120);
             this.CardNo.Name = "CardNo";
             this.CardNo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.CardNo.Size = new System.Drawing.Size(120, 20);
             this.CardNo.TabIndex = 112;
+            this.CardNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(148, 150);
+            this.label9.Location = new System.Drawing.Point(138, 150);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 13);
             this.label9.TabIndex = 119;
@@ -372,14 +385,16 @@ namespace Atiran2.SadadPcPos
             this.Amount.Name = "Amount";
             this.Amount.Size = new System.Drawing.Size(120, 20);
             this.Amount.TabIndex = 130;
+            this.Amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ProcessingCode
             // 
-            this.ProcessingCode.Location = new System.Drawing.Point(223, 93);
+            this.ProcessingCode.Location = new System.Drawing.Point(223, 147);
             this.ProcessingCode.Name = "ProcessingCode";
             this.ProcessingCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ProcessingCode.Size = new System.Drawing.Size(120, 20);
             this.ProcessingCode.TabIndex = 113;
+            this.ProcessingCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // PacketType
             // 
@@ -388,11 +403,12 @@ namespace Atiran2.SadadPcPos
             this.PacketType.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.PacketType.Size = new System.Drawing.Size(120, 20);
             this.PacketType.TabIndex = 110;
+            this.PacketType.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(173, 177);
+            this.label2.Location = new System.Drawing.Point(138, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 131;
@@ -420,9 +436,30 @@ namespace Atiran2.SadadPcPos
             this.radioButtonAsync.Text = "Async";
             this.radioButtonAsync.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(349, 42);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(129, 13);
+            this.label8.TabIndex = 138;
+            this.label8.Text = "Response Code Message";
+            // 
+            // ResponseCodeMessage
+            // 
+            this.ResponseCodeMessage.Location = new System.Drawing.Point(223, 39);
+            this.ResponseCodeMessage.Multiline = true;
+            this.ResponseCodeMessage.Name = "ResponseCodeMessage";
+            this.ResponseCodeMessage.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ResponseCodeMessage.Size = new System.Drawing.Size(120, 43);
+            this.ResponseCodeMessage.TabIndex = 139;
+            this.ResponseCodeMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(769, 240);
+            this.ClientSize = new System.Drawing.Size(769, 261);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.ResponseCodeMessage);
             this.Controls.Add(this.radioButtonSync);
             this.Controls.Add(this.radioButtonAsync);
             this.Controls.Add(this.txtSaleOrderId);
@@ -461,23 +498,74 @@ namespace Atiran2.SadadPcPos
             this.Controls.Add(this.PacketType);
             this.Controls.Add(this.label2);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
+        private void CleanResult()
+        {
+            PacketType.Text = "";
+            ResponseCode.Text = "";
+            ResponseCodeMessage.Text = "";
+            Amount.Text = "";
+            CardNo.Text = "";
+            ProcessingCode.Text = "";
+            TransactionNo.Text = "";
+            TransactionTime.Text = "";
+            transactionDate.Text = "";
+            RRN.Text = "";
+            ApprovalCode.Text = "";
+            Terminal.Text = "";
+            Merchant.Text = "";
+            OptionalField.Text = "";
+            PcPosStatus.Text = "";
+            txtSaleOrderId.Text = "";
+        }
+
+        #region Solotion 1 (Using Class PcPos)
+
+        private PcPos Pc = new PcPos();
+
         private void btnSale_Click(object sender, EventArgs e)
         {
-            btnSale.Text = (btnSale.Text != PcPos.TextBuy && btnSale.Text != PcPos.TextCancelBuy) ? PcPos.TextBuy : btnSale.Text;
 
             CleanResult();
 
-            Pc.Ip = IP_Pos;
-            Pc.Port = Port_Pos;
-            Pc.isAsync = radioButtonAsync.Checked;
-            Pc.SentAmountToPos(txtPayAmount.Text, (btnSale.Text != PcPos.TextBuy && btnSale.Text != PcPos.TextCancelBuy));
+            if (btnSale.Text == PcPos.TextBuy)
+            {
+                Pc.Ip = IP_Pos;
+                Pc.Port = Port_Pos;
+                Pc.isAsync = radioButtonAsync.Checked;
+
+                //set controls
+                Pc.Controls.form = this;
+                Pc.Controls.Sale = (Button)sender;
+                Pc.Controls.RRN = RRN;
+                Pc.Controls.PcPosStatus = PcPosStatus;
+                Pc.Controls.ResponseCodeMessage = ResponseCodeMessage;
+                Pc.Controls.ResponseCode = ResponseCode;
+                Pc.Controls.TransactionTime = TransactionTime;
+                Pc.Controls.TransactionDate = transactionDate;
+            }
+
+            Pc.SentAmountToPos(txtPayAmount.Text, (btnSale.Text != PcPos.TextBuy));
         }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Pc?.Dispose();
+        }
+
+        #endregion
+
+        #region Solotion 2 (Using sadad.PcPos.Core.dll)
+
+        //public PcPosBusiness PcPos;
+        //private int[] retryTimeOut = new[] { 5000, 5000, 5000 };
+        //private int[] responseTimeout = new[] { 120000, 5000, 5000 };
 
         //#region Event PcPosObject
         //private void btnSale_Click(object sender, EventArgs e)
@@ -597,29 +685,14 @@ namespace Atiran2.SadadPcPos
         //    }
         //}
 
+        //private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        //{
+        //    PcPos?.Dispose();
+        //}
+
         //#endregion
-        private void CleanResult()
-        {
-            PacketType.Text = "";
-            ResponseCode.Text = "";
-            Amount.Text = "";
-            CardNo.Text = "";
-            ProcessingCode.Text = "";
-            TransactionNo.Text = "";
-            TransactionTime.Text = "";
-            transactionDate.Text = "";
-            RRN.Text = "";
-            ApprovalCode.Text = "";
-            Terminal.Text = "";
-            Merchant.Text = "";
-            OptionalField.Text = "";
-            PcPosStatus.Text = "";
-            txtSaleOrderId.Text = "";
-        }
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //PcPos?.Dispose();
-            Pc?.Dispose();
-        }
+
+        #endregion
+
     }
 }

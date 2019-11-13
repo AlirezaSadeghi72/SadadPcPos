@@ -10,33 +10,26 @@ namespace Atiran2.Utility.PcPos
 {
     public class PcPos : PcPosBusiness, IDisposable
     {
-        public PcPos(Control ControlClick, Control ResultRRN, Control ResultStatus, Form form)
-        {
-            _control = ControlClick;
-            _resultRRN = ResultRRN;
-            _resultStatus = ResultStatus;
-            _form = form;
-        }
 
         private static int[] _retryTimeOut = new[] { 5000, 5000, 5000 };
         private static int[] _responseTimeout = new[] { 120000, 5000, 5000 };
-        private Control _control, _resultRRN, _resultStatus;
-        private Form _form;
-
-        //public PcPosBusiness pcPos;
-        //public string IP;
-        //public int Port = 8888;
-        public bool isAsync = false;
-        //public PosResult Result;
-
+        
         public static string TextBuy => Resources.Buy;
         public static string TextCancelBuy => Resources.Cancel_Buy;
 
+        public bool isAsync = true;
+        //public PosResult Result;
+
+
+        public (Form form, Button Sale, Control RRN, Control PcPosStatus, Control ResponseCodeMessage, Control ResponseCode, Control Amount, Control TransactionTime, Control TransactionDate) Controls;
+
         public void SentAmountToPos(string amount, bool isCanselBuy)
         {
+            if (Controls.Sale == null || Controls.form == null) 
+                throw new NullReferenceException();
             try
             {
-                if (_control.Text == Resources.Buy)
+                if (Controls.Sale.Text == Resources.Buy)
                 {
                     CreatePcPosObject();
 
@@ -53,33 +46,31 @@ namespace Atiran2.Utility.PcPos
                     this.Amount = amount;
                     this.RetryTimeOut = _retryTimeOut;
                     this.ResponseTimeOut = _responseTimeout;
-
-                    //this.Ip = IP;
-                    //this.Port = Port;
+                    
                     this.ConnectionType = PcPosConnectionType.Lan;
 
                     //set result call back
                     if (isAsync)
                     {
                         this.AsyncSaleTransaction();
-                        _control.Text = Resources.Cancel_Buy;
+                        Controls.Sale.Text = Resources.Cancel_Buy;
                     }
                     else
                     {
-                        _control.Text = Resources.Cancel_Buy;
+                        Controls.Sale.Text = Resources.Cancel_Buy;
                         PcPosSaleResult(null, this.SyncSaleTransaction());
                     }
 
                 }
-                else if (_control.Text == Resources.Cancel_Buy)
+                else if (Controls.Sale.Text == Resources.Cancel_Buy)
                 {
                     this.AbortPcPosOperation();
-                    _control.Text = Resources.Buy;
+                    Controls.Sale.Text = Resources.Buy;
                 }
             }
             catch (Exception ex)
             {
-                _control.Text = Resources.Buy;
+                Controls.Sale.Text = Resources.Buy;
                 MessageBox.Show(ex.Message);
             }
         }
@@ -88,25 +79,17 @@ namespace Atiran2.Utility.PcPos
         {
             Action<PosResult> fillResult = delegate (PosResult e)
             {
-                //PacketType.Text = e.PacketType;
-                //ResponseCode.Text = e.ResponseCode;
-                //Amount.Text = e.Amount;
-                //CardNo.Text = e.CardNo;
-                //ProcessingCode.Text = e.ProcessingCode;
-                //TransactionNo.Text = e.TransactionNo;
-                //TransactionTime.Text = e.TransactionTime;
-                //transactionDate.Text = e.TransactionDate;
-                _resultRRN.Text = e.Rrn;
-                //ApprovalCode.Text = e.ApprovalCode;
-                //Terminal.Text = e.TerminalId;
-                //Merchant.Text = e.MerchantId;
-                //OptionalField.Text = e.OptionalField;
-                _resultStatus.Text = e.PcPosStatus;
-                //txtSaleOrderId.Text = e.OrderId;
+                if (Controls.RRN != null) Controls.RRN.Text = e.Rrn;
+                if (Controls.PcPosStatus != null) Controls.PcPosStatus.Text = e.PcPosStatus;
+                if (Controls.ResponseCodeMessage != null) Controls.ResponseCodeMessage.Text = e.ResponseCodeMessage;
+                if (Controls.ResponseCode != null) Controls.ResponseCode.Text = e.ResponseCode;
+                if (Controls.Amount != null) Controls.Amount.Text = e.Amount;
+                if (Controls.TransactionTime != null) Controls.TransactionTime.Text = e.TransactionTime;
+                if (Controls.TransactionDate != null) Controls.TransactionDate.Text = e.TransactionDate;
 
                 //Result = e;
 
-                _control.Text = Resources.Buy;
+                Controls.Sale.Text = Resources.Buy;
 
 
                 if (e.PcPosStatusCode != (int)FrameExchangeResponse.SimultaneousRequestError)
@@ -115,9 +98,9 @@ namespace Atiran2.Utility.PcPos
                 }
             };
 
-            if (_form.InvokeRequired)
+            if (Controls.form.InvokeRequired)
             {
-                _form.BeginInvoke(new MethodInvoker(() =>
+                Controls.form.BeginInvoke(new MethodInvoker(() =>
                 {
                     fillResult(pPosResult);
                 }));
@@ -128,21 +111,12 @@ namespace Atiran2.Utility.PcPos
             }
         }
 
-
-        #region Method
-
-
         private void CreatePcPosObject()
         {
-            //if (this == null)
-            //{
             this.OnSaleResult += PcPosSaleResult;
-            //}
         }
-
-        #endregion
-
-
+        
         public void Dispose() => base.Dispose();
+        
     }
 }
