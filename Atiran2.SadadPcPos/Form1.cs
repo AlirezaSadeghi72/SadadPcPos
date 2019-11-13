@@ -551,7 +551,8 @@ namespace Atiran2.SadadPcPos
                 Pc.Controls.TransactionDate = transactionDate;
             }
 
-            Pc.SentAmountToPos(txtPayAmount.Text, (btnSale.Text != PcPos.TextBuy));
+            Pc.SentAmountToPos(txtPayAmount.Text);
+
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

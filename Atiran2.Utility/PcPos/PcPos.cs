@@ -23,7 +23,7 @@ namespace Atiran2.Utility.PcPos
 
         public (Form form, Button Sale, Control RRN, Control PcPosStatus, Control ResponseCodeMessage, Control ResponseCode, Control Amount, Control TransactionTime, Control TransactionDate) Controls;
 
-        public void SentAmountToPos(string amount, bool isCanselBuy)
+        public void SentAmountToPos(string amount)
         {
             if (Controls.Sale == null || Controls.form == null) 
                 throw new NullReferenceException();
